@@ -1,0 +1,27 @@
+body
+{
+    background-color: bisque;
+}
+.container
+{
+    display: flex;
+    justify-content: center;
+}
+.image-cropper
+{
+    
+    position: relative; 
+    width: 400px; 
+    height: 400px;     
+    overflow: hidden; 
+    border-radius: 50%;
+}
+
+.jonas1
+{
+    
+    margin: 0 auto;
+    margin-left: 0%;
+    height: auto;
+    width: 100%;
+}
