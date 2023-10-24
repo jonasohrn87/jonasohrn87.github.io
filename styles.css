@@ -2,6 +2,17 @@ body
 {
     background-color: bisque;
 }
+
+.border-img
+{
+    position: absolute;
+    background-size: cover;
+    margin-left: -1%;
+    margin-top: 130px;
+    width: 105%;
+    height: 260px;
+}
+
 .container
 {
     display: flex;
@@ -10,18 +21,73 @@ body
 .image-cropper
 {
     
-    position: relative; 
+    position: relative;
+    margin-top: 30px; 
     width: 400px; 
     height: 400px;     
     overflow: hidden; 
     border-radius: 50%;
 }
 
-.jonas1
+.jonas-img
 {
     
     margin: 0 auto;
     margin-left: 0%;
     height: auto;
     width: 100%;
+}
+
+*{
+    box-sizing: border-box;
+
+.about-me-button
+{
+position: absolute;
+left: 15%;
+top: 22%;
+}
+.my-projects-button
+{
+position: absolute;
+left: 15%;
+top: 32%;
+}
+.contact-me-button
+{
+position: absolute;
+left: 15%;
+top: 42%;
+}
+
+.button
+{
+    position: absolute;
+    top: 50%;
+    background-color: #0a0a23;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    min-height: 45px;
+    min-width: 250px;
+}
+button:hover
+{
+    background-color: #002ead;
+    transition: 0.2s;
+}
+
+.button:focus
+{
+    outline-color: transparent;
+    outline-style: solid;
+    box-shadow: 0 0 0 4px #5a01a7;
+}
+
+.button:active
+{
+background-color: #ffbf00;
+}
+
 }
