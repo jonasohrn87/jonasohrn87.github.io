@@ -5,10 +5,11 @@ body
 
 .border-img
 {
+    z-index: -1;
     position: absolute;
     background-size: cover;
     margin-left: -1%;
-    margin-top: 130px;
+    margin-top: 145px;
     width: 105%;
     height: 260px;
 }
@@ -16,7 +17,7 @@ body
 .container
 {
     display: flex;
-    justify-content: center;
+    justify-content:space-evenly;
 }
 .image-cropper
 {
@@ -27,6 +28,7 @@ body
     height: 400px;     
     overflow: hidden; 
     border-radius: 50%;
+    border: 10px solid black;
 }
 
 .jonas-img
@@ -38,34 +40,22 @@ body
     width: 100%;
 }
 
+.menu-buttons
+{
+display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 30px;
+margin-top: 25px;
 
+}
 
 *{
     box-sizing: border-box;
 
-.about-me-button
-{
-position: absolute;
-left: 15%;
-top: 22%;
-}
-.my-projects-button
-{
-position: absolute;
-left: 15%;
-top: 32%;
-}
-.contact-me-button
-{
-position: absolute;
-left: 15%;
-top: 42%;
-}
-
 .button
 {
-    position: absolute;
-    top: 50%;
+    z-index: 1;
     background-color: #0a0a23;
     color: #fff;
     border: none;
@@ -74,6 +64,8 @@ top: 42%;
     min-height: 45px;
     min-width: 250px;
 }
+
+
 button:hover
 {
     background-color: #002ead;
@@ -94,33 +86,19 @@ background-color: #ffbf00;
 
 }
 
-.linked-in-position
+.icons
 {
-position: absolute;
-margin-top: -19%;
-margin-left: 68%;
-}
-
-.instagram-position
-{
-        position: absolute;
-        margin-top: -19%;
-        margin-left: 75%;
-}
-
-.facebook-position
-{
-    position: absolute;
-        margin-top: -19%;
-        margin-left: 82%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
 }
 
 .linked-in-img
 {
     position: relative;
     margin-top: 30px; 
-    width: 75px; 
-    height: 75px;     
+    width: 60px; 
+    height: 60px;     
     overflow: hidden; 
     border-radius: 50%;  
 }
@@ -129,8 +107,8 @@ margin-left: 68%;
 {
     position: relative;
     margin-top: 30px; 
-    width: 75px; 
-    height: 75px;     
+    width: 60px; 
+    height: 60px;     
     overflow: hidden; 
     border-radius: 50%;  
 }
@@ -139,8 +117,9 @@ margin-left: 68%;
 {
     position: relative;
     margin-top: 30px; 
-    width: 75px; 
-    height: 75px;     
+    width: 60px; 
+    height: 60px;     
     overflow: hidden; 
     border-radius: 50%;  
 }
+
