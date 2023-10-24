@@ -1,6 +1,6 @@
 body
 {
-    background-color: bisque;
+    background-color: rgba(9, 255, 234, 0.815);
 }
 
 .border-img
@@ -31,12 +31,14 @@ body
 
 .jonas-img
 {
-    
+
     margin: 0 auto;
     margin-left: 0%;
     height: auto;
     width: 100%;
 }
+
+
 
 *{
     box-sizing: border-box;
@@ -90,4 +92,55 @@ button:hover
 background-color: #ffbf00;
 }
 
+}
+
+.linked-in-position
+{
+position: absolute;
+margin-top: -19%;
+margin-left: 68%;
+}
+
+.instagram-position
+{
+        position: absolute;
+        margin-top: -19%;
+        margin-left: 75%;
+}
+
+.facebook-position
+{
+    position: absolute;
+        margin-top: -19%;
+        margin-left: 82%;
+}
+
+.linked-in-img
+{
+    position: relative;
+    margin-top: 30px; 
+    width: 75px; 
+    height: 75px;     
+    overflow: hidden; 
+    border-radius: 50%;  
+}
+
+.facebook-img
+{
+    position: relative;
+    margin-top: 30px; 
+    width: 75px; 
+    height: 75px;     
+    overflow: hidden; 
+    border-radius: 50%;  
+}
+
+.instagram-img
+{
+    position: relative;
+    margin-top: 30px; 
+    width: 75px; 
+    height: 75px;     
+    overflow: hidden; 
+    border-radius: 50%;  
 }
