@@ -1,0 +1,180 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: sans-serif;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+.hidden{
+    overflow: hidden;
+}
+
+.background{
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    background-image: url('img/solupgång2.jpg');
+    background-size: cover;
+    background-position: 50% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    transition: transform 1.0s;
+    gap: 20px;
+}
+
+.profile-img1 {
+    height: auto;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -60px;
+    filter:drop-shadow(1px 1px 10px black)
+    drop-shadow(-1px -1px 0 black);
+    transform: scaleX(-1)
+}
+
+.background h1{
+    color: white;
+    font-size: 100px;
+    filter:drop-shadow(1px 1px 10px black)
+    drop-shadow(-1px -1px 0 black);
+}
+header nav{
+    display: flex;
+    justify-content:space-between;
+    align-items: end; 
+    color: white;
+    padding: 20px 60px;
+    position: absolute;
+    width: 92%;
+    z-index: 10;
+    position: fixed;
+    background: #fff;
+    border-bottom-style:solid ;
+    border-color: black;
+}
+
+header nav span{
+    width: 40%;
+    display: flex;
+    justify-content: space-around; 
+}
+
+header nav span a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    position: relative;
+
+}
+
+@keyframes beforeAnimate{
+0%{
+    width: 0%;
+    transform: translateX(-50%);
+    }
+100%{
+    width: 100%;
+    transform: translateX(0%);
+    }
+}
+
+header nav span a::before{
+    content:"";
+    background-color: rgb(221, 163, 47);
+    width: 100%;
+    height: 2.4px;
+    position: absolute;
+    bottom: -5px;
+    left: 0px;
+    display: none;
+    animation: beforeAnimate.5s;
+}
+
+header nav span a:hover::before{
+    display: unset;
+}
+
+.social-media{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border: solid;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    
+
+}
+
+.profile-img {
+    height: auto;
+    width: 200px;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    margin-bottom: -60px;
+    margin-top: 70px;
+    margin-right: 40px;
+}
+
+section nav a:hover{
+    filter: grayscale();
+}
+
+section nav{
+height: 0px;
+padding: 0em;
+margin: 0em;
+justify-content: end;
+align-self: flex-end;
+}
+
+.About-me{
+    background-color: rgb(153, 153, 155);
+    background-size: cover;
+    color: white;
+    padding: 20px 10px;
+    font-size: 16px;
+}
+
+.About-me h1{
+    justify-content: center;
+    display: flex;
+    
+}
+.About-me p{
+    padding: 18px 250px;
+}
+
+#slider{
+    overflow: hidden;
+}
+
+figure{
+    display: flex;
+    justify-content: center;
+}
+
+.jobb-bild{
+display: flex;
+flex-direction:column;
+height: auto;
+width: 15%;
+padding: 15px;
+}
+
+#skogen-jonas{
+transform: scaleX(-1)
+}
+
+.project-bild{
+display: flex;
+flex-direction:column;
+height: auto;
+width: 15%;
+padding: 10px;
+}
