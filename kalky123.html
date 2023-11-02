@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miniräknare</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <div class="buttons">
+            <input type="button" value="7" onclick="updateDisplay('7')">
+            <input type="button" value="8" onclick="updateDisplay('8')">
+            <input type="button" value="9" onclick="updateDisplay('9')">
+            <input type="button" value="+" onclick="updateDisplay('+')" class="operator">
+
+            <input type="button" value="4" onclick="updateDisplay('4')">
+            <input type="button" value="5" onclick="updateDisplay('5')">
+            <input type="button" value="6" onclick="updateDisplay('6')">
+            <input type="button" value="-" onclick="updateDisplay('-')" class="operator">
+
+            <input type="button" value="1" onclick="updateDisplay('1')">
+            <input type="button" value="2" onclick="updateDisplay('2')">
+            <input type="button" value="3" onclick="updateDisplay('3')">
+            <input type="button" value="*" onclick="updateDisplay('*')" class="operator">
+
+            <input type="button" value="0" onclick="updateDisplay('0')">
+            <input type="button" value="=" onclick="solve()" class="equal operator">
+            <input type="button" value="/" onclick="updateDisplay('/')" class="operator">
+            <input type="button" value="AC" onclick="clr()" class="operator">
+        </div>
+    </div>
+    <script src="kalkyscript.js"></script>
+</body>
+</html>

@@ -50,7 +50,7 @@ header nav{
     color: white;
     padding: 20px 60px;
     position: absolute;
-    width: 92%;
+    width: 100%;
     z-index: 10;
     position: fixed;
     background: #fff;
@@ -58,17 +58,60 @@ header nav{
     border-color: black;
 }
 
+@media screen and (max-width: 768px) {
+
+    .background{
+        min-height: 75vh;
+    }
+
+    .profile-img1 {
+        width: 130px;
+    }
+
+    .background h1{
+        font-size: 35px;
+    }
+
+    header nav {
+        padding: 15px 20px;
+        max-height: 25px;
+        justify-content:left;
+        margin-top: 0px;
+    }
+
+    .sticky-bar nav a{
+        padding-bottom: 1px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+  
+    header nav span a{
+        padding: 14px;
+    }
+
+    #profile-Img-Id {
+       display: none;
+    }
+
+    .social-media{
+        display: flex;
+    }
+}
+
 header nav span{
     width: 40%;
     display: flex;
-    justify-content: space-around; 
+    justify-content: space-evenly; 
 }
 
 header nav span a{
     text-decoration: none;
     color: rgb(0, 0, 0);
     position: relative;
-
+    
 }
 
 @keyframes beforeAnimate{
@@ -102,12 +145,9 @@ header nav span a:hover::before{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    border: solid;
     position: -webkit-sticky;
     position: sticky;
-    top: 0px;
-    
-
+    top: 10px;
 }
 
 .profile-img {
@@ -117,7 +157,7 @@ header nav span a:hover::before{
     align-items: end;
     justify-content: end;
     margin-bottom: -60px;
-    margin-top: 70px;
+    margin-top: 10px;
     margin-right: 40px;
 }
 
@@ -133,12 +173,17 @@ justify-content: end;
 align-self: flex-end;
 }
 
+#jobb-bild{
+    object-fit: cover;
+}
+
 .About-me{
     background-color: rgb(153, 153, 155);
     background-size: cover;
     color: white;
     padding: 20px 10px;
     font-size: 16px;
+    border-top: solid 1px black;
 }
 
 .About-me h1{
@@ -146,8 +191,9 @@ align-self: flex-end;
     display: flex;
     
 }
+
 .About-me p{
-    padding: 18px 250px;
+    padding: 18px 25px;
 }
 
 #slider{
@@ -177,4 +223,61 @@ flex-direction:column;
 height: auto;
 width: 15%;
 padding: 10px;
+}
+
+
+.cirkel{
+    height: 100px;
+    width: 100px;
+    border-style: solid;
+    border-radius: 50%;
+    animation: myAnimation1 linear;
+        animation-duration: 2.5s;
+        animation-delay: 1s;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+}
+
+.cirkel:hover{
+
+}
+
+@keyframes myAnimation
+{
+ 
+
+}
+@keyframes myAnimation1
+{
+    0% {
+        color: blue;
+        transform: scale(0%);
+        background-color: aqua;
+        
+    }
+    25% {
+        color: red;
+        transform: scale(25%);
+        background-color: brown;
+       
+    }
+    50% {
+        color: green;
+        transform: scale(50%);
+        background-color: chartreuse;
+        right: 300px
+       
+    }
+    75% {
+        color: orange;
+        transform: scale(75%);
+        background-color: lightsalmon;      
+    }
+    
+    100% {
+        color: pink;
+        transform: scale(1000%);
+        opacity: 0.5;
+
+    }
 }
