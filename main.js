@@ -52,3 +52,32 @@ window.addEventListener("scroll", () => {
         fixedBar.style.top = stickyBarHeight + "px";
     }
 });
+
+//Klocka
+
+setInterval(displayTime, 1000);
+
+function displayTime(){
+    const timeNow = new Date();
+
+let hourOfDay = timeNow.getHours();
+let minutes = timeNow.getMinutes();
+let seconds = timeNow.getSeconds();
+//let weekDay = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+//let today = weekDay[timeNow.getDay()];
+let today = timeNow.getDay();
+let months = timeNow.toLocaleDateString("default", { month: "short" })
+let year = timeNow.getFullYear();
+
+
+hourOfDay = hourOfDay < 10 ? "0" + hourOfDay : hourOfDay;
+minutes = minutes < 10 ? "0" + minutes : minutes;
+seconds = seconds < 10 ? "0" + seconds : seconds;
+today = today < 10 ? "0" + today : today;
+let Time = hourOfDay + ":" + minutes + ":" + seconds;
+
+document.getElementById('clock').innerHTML = Time + " ";
+document.getElementById('date').innerHTML = today + " " + months.toUpperCase().replace(/[.]/g, '') + " " + year; 
+}
+
+displayTime();

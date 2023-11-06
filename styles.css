@@ -58,6 +58,26 @@ header nav{
     border-color: black;
 }
 
+.glow{
+    font-size: 25px;
+    color: #05611d;
+    font-weight: bold;
+    animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    -webkit-animation: glow 1s ease-in-out infinite alternate; 
+}
+
+#date{
+    padding-right: 700px;
+}
+
+@-webkit-keyframes glow {
+    from {
+        text-shadow: 0 0 1px #040404, 0 0 2px #030303, 0 0 3px #000000, 0 0 4px #000000;
+    }
+    
+}
+
 @media screen and (max-width: 768px) {
 
     .background{
