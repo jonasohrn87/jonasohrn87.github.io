@@ -1,6 +1,5 @@
-Start projekt för att snabbt komma igång med olika projekt.
+projekt för datumkontroll av produkter.
 React, Tailwind css
 
-Färdiga komponenter
-* Header
-* Main
+
+
