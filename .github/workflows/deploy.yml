@@ -17,9 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./frontend  # kör kommandon i frontend-mappen
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -31,16 +28,20 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+        working-directory: ./frontend
 
-      - name: Build project
+      - name: Build frontend
         run: npm run build
+        working-directory: ./frontend
+
+      - name: List dist folder (debug)
+        run: ls -R ./frontend/dist
 
       - name: Upload production-ready build
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist  # Vite bygger till dist
-          working-directory: ./frontend
-
+          path: ./frontend/dist   # måste vara från repo root
+          
   deploy:
     needs: build
     runs-on: ubuntu-latest
