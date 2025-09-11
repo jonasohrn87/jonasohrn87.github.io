@@ -8,6 +8,7 @@ const isProjectSite = true
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: isProjectSite ? `/${repoName}/` : '/',
+  base: '/',
 })
+
 
