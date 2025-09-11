@@ -1,4 +1,5 @@
 {
+  "homepage": "https://<jonasohrn87>.github.io",
   "name": "tailwindcss",
   "private": true,
   "version": "0.0.0",
@@ -30,3 +31,4 @@
     "vite": "^6.3.5"
   }
 }
+
