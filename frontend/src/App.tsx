@@ -1,22 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Main from "./components/MainLayout";
-import FoodContainer from "./components/FoodContainer";
+import DateChecker from "./components/DateChecker";
+import StoreHelper from "./components/StoreHelper";
 import "react-datepicker/dist/react-datepicker.css";
 
 const headerTitle = "Hållbarhetskollen";
-const containerTitle = "Muffins";
-const containerTitle1 = "Kondisbitar";
+
+type TabKey = "dateChecker" | "storeHelper";
 
 function App() {
+  const [activeTab, setActiveTab] = useState<TabKey>("dateChecker");
+
   return (
     <>
       <div className="min-h-screen flex flex-col">
         <Header title={headerTitle} />
         <Main>
-          <FoodContainer title={containerTitle} />
-          <FoodContainer title={containerTitle1} />
+          <div className="mb-4">
+            <div className="flex space-x-2">
+              <button
+                onClick={() => setActiveTab("dateChecker")}
+                className={`px-4 py-2 rounded-md font-medium ${
+                  activeTab === "dateChecker"
+                    ? "bg-blue-600 text-white"
+                    : "bg-white text-gray-700 border"
+                }`}
+              >
+                Date checker
+              </button>
+
+              <button
+                onClick={() => setActiveTab("storeHelper")}
+                className={`px-4 py-2 rounded-md font-medium ${
+                  activeTab === "storeHelper"
+                    ? "bg-blue-600 text-white"
+                    : "bg-white text-gray-700 border"
+                }`}
+              >
+                Store helper
+              </button>
+            </div>
+          </div>
+
+          <div>
+            {activeTab === "dateChecker" && <DateChecker />}
+            {activeTab === "storeHelper" && <StoreHelper />}
+          </div>
         </Main>
       </div>
     </>
