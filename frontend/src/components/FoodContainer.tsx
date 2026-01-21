@@ -20,16 +20,16 @@ const FoodContainer: React.FC<FoodContainerProps> = ({ title }) => {
   // Enkel mockdata per kategori
   const mockData: Record<string, ProductItem[]> = {
     Muffins: [
-      { id: 1, name: "Blåbärsmuffin", expiryDate: "2025-09-12" },
-      { id: 2, name: "Chokladmuffin", expiryDate: "2025-09-14" },
-      { id: 3, name: "CaramelMuffin", expiryDate: "2025-09-11" },
-      { id: 4, name: "Morotsmuffin", expiryDate: "2025-09-13" },
+      { id: 1, name: "Blåbärsmuffin", expiryDate: "2026-01-23" },
+      { id: 2, name: "Chokladmuffin", expiryDate: "2026-01-23" },
+      { id: 3, name: "CaramelMuffin", expiryDate: "2026-01-23" },
+      { id: 4, name: "Morotsmuffin", expiryDate: "2026-01-23" },
     ],
     Kondisbitar: [
-      { id: 5, name: "Dammsugare", expiryDate: "2025-09-10" },
-      { id: 6, name: "Biskvi", expiryDate: "2025-09-15" },
-      { id: 7, name: "Mazarin", expiryDate: "2025-09-12" },
-      { id: 8, name: "Chokladboll", expiryDate: "2025-09-16" },
+      { id: 5, name: "Dammsugare", expiryDate: "2026-01-23" },
+      { id: 6, name: "Biskvi", expiryDate: "2026-01-23" },
+      { id: 7, name: "Mazarin", expiryDate: "2026-01-23" },
+      { id: 8, name: "Chokladboll", expiryDate: "2026-01-23" },
     ],
   };
 
