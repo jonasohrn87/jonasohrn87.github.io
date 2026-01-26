@@ -22,6 +22,7 @@ namespace backend.Controllers
             return await _context.Gavels
                 .Include(g => g.GavelProducts)
                 .ThenInclude(gp => gp.Product)
+                .ThenInclude(p => p.Category)
                 .ToListAsync();
         }
 
@@ -31,6 +32,7 @@ namespace backend.Controllers
             var gavel = await _context.Gavels
                 .Include(g => g.GavelProducts)
                 .ThenInclude(gp => gp.Product)
+                .ThenInclude(p => p.Category)
                 .FirstOrDefaultAsync(g => g.Id == id);
             if (gavel == null) return NotFound();
             return gavel;

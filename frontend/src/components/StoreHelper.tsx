@@ -64,23 +64,43 @@ const StoreHelper: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const [productsRes, gavelsRes, categoriesRes] = await Promise.all([
-        fetch(`${API_BASE}/products`),
-        fetch(`${API_BASE}/gavels`),
-        fetch(`${API_BASE}/categories`),
-      ]);
-
-      if (!productsRes.ok || !gavelsRes.ok || !categoriesRes.ok) {
-        throw new Error("Failed to fetch data");
+      console.log("Fetching products...");
+      const productsRes = await fetch(`${API_BASE}/products`);
+      if (!productsRes.ok) {
+        console.error("Failed to fetch products:", productsRes.status, productsRes.statusText);
+        throw new Error(`Failed to fetch products: ${productsRes.status}`);
       }
+      const products = await productsRes.json();
+      console.log("Products parsed:", products);
 
-      setProducts(await productsRes.json());
-      setGavels(await gavelsRes.json());
-      setCategories(await categoriesRes.json());
+      console.log("Fetching gavels...");
+      const gavelsRes = await fetch(`${API_BASE}/gavels`);
+      if (!gavelsRes.ok) {
+        console.error("Failed to fetch gavels:", gavelsRes.status, gavelsRes.statusText);
+        throw new Error(`Failed to fetch gavels: ${gavelsRes.status}`);
+      }
+      const gavels = await gavelsRes.json();
+      console.log("Gavels parsed:", gavels);
+
+      console.log("Fetching categories...");
+      const categoriesRes = await fetch(`${API_BASE}/categories`);
+      if (!categoriesRes.ok) {
+        console.error("Failed to fetch categories:", categoriesRes.status, categoriesRes.statusText);
+        throw new Error(`Failed to fetch categories: ${categoriesRes.status}`);
+      }
+      const categories = await categoriesRes.json();
+      console.log("Categories parsed:", categories);
+
+      setProducts(products);
+      setGavels(gavels);
+      setCategories(categories);
+      console.log("State updated successfully");
     } catch (err) {
+      console.error("Error in fetchData:", err);
       setError(err instanceof Error ? err.message : "Unknown error");
     } finally {
       setLoading(false);
+      console.log("Loading set to false");
     }
   };
 
@@ -147,9 +167,7 @@ const StoreHelper: React.FC = () => {
   if (loading) return <div className="text-center text-xl">Loading StoreHelper...</div>;
   if (error) return <div className="text-center text-xl text-red-500">Error: {error}</div>;
 
-  /* =======================
-     Render
-  ======================= */
+  console.log("Rendering StoreHelper JSX");
   return (
     <section className="px-4">
       <h2 className="mb-4 text-xl font-semibold">Store Helper</h2>
