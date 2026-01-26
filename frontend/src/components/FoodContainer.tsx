@@ -5,6 +5,11 @@ import { CalendarDaysIcon } from "@heroicons/react/24/outline";
 const greenColor = "text-green-600";
 const yellowColor = "text-yellow-600";
 const redColor = "text-red-600";
+const todayDate= new Date();
+const tomorrowDate = new Date();
+tomorrowDate.setDate(todayDate.getDate() + 1);
+const dayAfterTomorrowDate = new Date();
+dayAfterTomorrowDate.setDate(todayDate.getDate() + 2);
 
 interface FoodContainerProps {
   title: string;
@@ -20,16 +25,16 @@ const FoodContainer: React.FC<FoodContainerProps> = ({ title }) => {
   // Enkel mockdata per kategori
   const mockData: Record<string, ProductItem[]> = {
     Muffins: [
-      { id: 1, name: "Blåbärsmuffin", expiryDate: "2026-01-23" },
-      { id: 2, name: "Chokladmuffin", expiryDate: "2026-01-23" },
-      { id: 3, name: "CaramelMuffin", expiryDate: "2026-01-23" },
-      { id: 4, name: "Morotsmuffin", expiryDate: "2026-01-23" },
+      { id: 1, name: "Blåbärsmuffin", expiryDate: todayDate.toISOString().split("T")[0] },
+      { id: 2, name: "Chokladmuffin", expiryDate: tomorrowDate.toISOString().split("T")[0] },
+      { id: 3, name: "CaramelMuffin", expiryDate: tomorrowDate.toISOString().split("T")[0] },
+      { id: 4, name: "Morotsmuffin", expiryDate: tomorrowDate.toISOString().split("T")[0] },
     ],
     Kondisbitar: [
-      { id: 5, name: "Dammsugare", expiryDate: "2026-01-23" },
-      { id: 6, name: "Biskvi", expiryDate: "2026-01-23" },
-      { id: 7, name: "Mazarin", expiryDate: "2026-01-23" },
-      { id: 8, name: "Chokladboll", expiryDate: "2026-01-23" },
+      { id: 5, name: "Dammsugare", expiryDate: dayAfterTomorrowDate.toISOString().split("T")[0] },
+      { id: 6, name: "Biskvi", expiryDate: dayAfterTomorrowDate.toISOString().split("T")[0] },
+      { id: 7, name: "Mazarin", expiryDate: dayAfterTomorrowDate.toISOString().split("T")[0] },
+      { id: 8, name: "Chokladboll", expiryDate: dayAfterTomorrowDate.toISOString().split("T")[0] },
     ],
   };
 

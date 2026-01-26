@@ -11,7 +11,7 @@ const headerTitle = "ButiksKollen";
 type TabKey = "dateChecker" | "storeHelper";
 
 function App() {
-  const [activeTab, setActiveTab] = useState<TabKey>("dateChecker");
+  const [activeTab, setActiveTab] = useState<TabKey>("storeHelper");
 
   return (
     <>
@@ -20,16 +20,6 @@ function App() {
         <Main>
           <div className="mb-4">
             <div className="flex space-x-2">
-              <button
-                onClick={() => setActiveTab("dateChecker")}
-                className={`px-4 py-2 rounded-md font-medium ${
-                  activeTab === "dateChecker"
-                    ? "bg-blue-600 text-white"
-                    : "bg-white text-gray-700 border"
-                }`}
-              >
-                Datum
-              </button>
 
               <button
                 onClick={() => setActiveTab("storeHelper")}
@@ -40,6 +30,16 @@ function App() {
                 }`}
               >
                 Gavlar
+              </button>
+              <button
+                onClick={() => setActiveTab("dateChecker")}
+                className={`px-4 py-2 rounded-md font-medium ${
+                  activeTab === "dateChecker"
+                    ? "bg-blue-600 text-white"
+                    : "bg-white text-gray-700 border"
+                }`}
+              >
+                Datum
               </button>
             </div>
           </div>
