@@ -6,7 +6,7 @@ import DateChecker from "./components/DateChecker";
 import StoreHelper from "./components/StoreHelper";
 import "react-datepicker/dist/react-datepicker.css";
 
-const headerTitle = "Hållbarhetskollen";
+const headerTitle = "ButiksKollen";
 
 type TabKey = "dateChecker" | "storeHelper";
 
@@ -28,7 +28,7 @@ function App() {
                     : "bg-white text-gray-700 border"
                 }`}
               >
-                Date checker
+                Datum
               </button>
 
               <button
@@ -39,7 +39,7 @@ function App() {
                     : "bg-white text-gray-700 border"
                 }`}
               >
-                Store helper
+                Gavlar
               </button>
             </div>
           </div>
