@@ -32,7 +32,7 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader());
 });
 
-builder.Services.AddValidatorsFromAssemblyContaining<CategoryValidator>();
+//builder.Services.AddValidatorsFromAssemblyContaining<CategoryValidator>();
 
 var app = builder.Build();
 
