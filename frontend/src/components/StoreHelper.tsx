@@ -17,7 +17,7 @@ interface Product {
   Brand: string;
   Name: string;
   CategoryId: number;
-  Category: { Id: number; Name: string };
+  Category: { Id: number; Name: string; TargetPercentage: number };
   Price: number;
   ProfitMarginAmount: number;
   ProfitMarginPercentage: number;
@@ -353,9 +353,21 @@ const StoreHelper: React.FC = () => {
                   {gp.Product.Brand} – {gp.Product.Name}
                 </p>
                 <p className="text-xs text-gray-600">
-                  Category: {gp.Product.Category.Name} | Price:{" "}
-                  {gp.Product.Price} SEK
-                </p>
+  Category: {gp.Product.Category.Name} | Price: {gp.Product.Price} SEK | Mål:{" "}
+  <span>
+    {gp.Product.Category.TargetPercentage}%
+  </span>
+  {" "} | Marginal:{" "}
+  <span
+    className={
+      gp.Product.ProfitMarginPercentage > gp.Product.Category.TargetPercentage
+        ? "text-green-600 font-semibold"
+        : "text-red-600 font-semibold"
+    }
+  >
+    {gp.Product.ProfitMarginPercentage}%
+  </span>
+</p>
               </div>
             ))}
           </div>
