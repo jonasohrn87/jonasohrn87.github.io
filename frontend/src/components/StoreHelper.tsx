@@ -1,4 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { Product } from "../models/Product";
+import { Gavel } from "../models/Gavel";
+import { Category } from "../models/Category";
+
+import { mockProducts } from "../mockData/products";
+import { mockGavels } from "../mockData/gavels";
+import { mockCategories } from "../mockData/categories";
+
+// keep the mock-data modules alive so they aren't optimized away.
+// each variable gets logged; this ensures the imports are used
+// at the top level and prevents HMR from injecting bogus imports
+// like `{ test }` which were previously causing SyntaxErrors.
+console.log("mockProducts (debug):", mockProducts);
+console.log("mockGavels (debug):", mockGavels);
+console.log("mockCategories (debug):", mockCategories);
 
 /* =======================
    Tailwind form classes
@@ -8,29 +23,6 @@ const inputClass =
 
 const selectClass =
   "w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500";
-
-/* =======================
-   Interfaces
-======================= */
-interface Product {
-  Id: number;
-  Brand: string;
-  Name: string;
-  CategoryId: number;
-  Category: { Id: number; Name: string; TargetPercentage: number };
-  Price: number;
-  ProfitMarginAmount: number;
-  ProfitMarginPercentage: number;
-  Image?: string;
-  BuyType: "SingleBuy" | "MultiBuy";
-}
-
-interface Gavel {
-  Id: number;
-  Title: string;
-  Image?: string;
-  GavelProducts: { Product: Product }[];
-}
 
 /* =======================
    Component
@@ -63,46 +55,36 @@ const StoreHelper: React.FC = () => {
   }, []);
 
   const fetchData = async () => {
-    try {
-      console.log("Fetching products...");
-      const productsRes = await fetch(`${API_BASE}/products`);
-      if (!productsRes.ok) {
-        console.error("Failed to fetch products:", productsRes.status, productsRes.statusText);
-        throw new Error(`Failed to fetch products: ${productsRes.status}`);
-      }
-      const products = await productsRes.json();
-      console.log("Products parsed:", products);
+  try {
+    const [productsRes, gavelsRes, categoriesRes] = await Promise.all([
+      fetch(`${API_BASE}/Product`),
+      fetch(`${API_BASE}/Gavel`),
+      fetch(`${API_BASE}/Category`),
+    ]);
 
-      console.log("Fetching gavels...");
-      const gavelsRes = await fetch(`${API_BASE}/gavels`);
-      if (!gavelsRes.ok) {
-        console.error("Failed to fetch gavels:", gavelsRes.status, gavelsRes.statusText);
-        throw new Error(`Failed to fetch gavels: ${gavelsRes.status}`);
-      }
-      const gavels = await gavelsRes.json();
-      console.log("Gavels parsed:", gavels);
-
-      console.log("Fetching categories...");
-      const categoriesRes = await fetch(`${API_BASE}/categories`);
-      if (!categoriesRes.ok) {
-        console.error("Failed to fetch categories:", categoriesRes.status, categoriesRes.statusText);
-        throw new Error(`Failed to fetch categories: ${categoriesRes.status}`);
-      }
-      const categories = await categoriesRes.json();
-      console.log("Categories parsed:", categories);
-
-      setProducts(products);
-      setGavels(gavels);
-      setCategories(categories);
-      console.log("State updated successfully");
-    } catch (err) {
-      console.error("Error in fetchData:", err);
-      setError(err instanceof Error ? err.message : "Unknown error");
-    } finally {
-      setLoading(false);
-      console.log("Loading set to false");
+    if (!productsRes.ok || !gavelsRes.ok || !categoriesRes.ok) {
+      throw new Error("API unavailable");
     }
-  };
+
+    const products = await productsRes.json();
+    const gavels = await gavelsRes.json();
+    const categories = await categoriesRes.json();
+
+    setProducts(products);
+    setGavels(gavels);
+    setCategories(categories);
+
+    console.log("Loaded data from API ✅");
+  } catch (err) {
+    console.warn("API failed, using mock data instead ⚠️");
+
+    setProducts(mockProducts);
+    setGavels(mockGavels);
+    setCategories(mockCategories);
+  } finally {
+    setLoading(false);
+  }
+};
 
   /* =======================
      Add product
