@@ -7,22 +7,14 @@ import { mockProducts } from "../mockData/products";
 import { mockGavels } from "../mockData/gavels";
 import { mockCategories } from "../mockData/categories";
 
+import AddProductForm from "./AddProductForm";
+import AddGavelForm from "./AddGavelForm";
+import GavelGrid from "./GavelGrid";
+
 // keep the mock-data modules alive so they aren't optimized away.
-// each variable gets logged; this ensures the imports are used
-// at the top level and prevents HMR from injecting bogus imports
-// like `{ test }` which were previously causing SyntaxErrors.
 console.log("mockProducts (debug):", mockProducts);
 console.log("mockGavels (debug):", mockGavels);
 console.log("mockCategories (debug):", mockCategories);
-
-/* =======================
-   Tailwind form classes
-======================= */
-const inputClass =
-  "w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500";
-
-const selectClass =
-  "w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500";
 
 /* =======================
    Component
@@ -157,204 +149,24 @@ const StoreHelper: React.FC = () => {
         Manage products and gavels.
       </p>
 
-      {/* Add Product */}
-      <div className="mb-8 rounded-lg border bg-white p-6 shadow-sm">
-        <h3 className="mb-4 text-lg font-semibold text-gray-800">
-          Add Product
-        </h3>
+      {/* Add Product section moved to separate component */}
+      <AddProductForm
+        categories={categories as Category[]}
+        newProduct={newProduct}
+        setNewProduct={setNewProduct}
+        addProduct={addProduct}
+      />
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <input
-            className={inputClass}
-            placeholder="Brand"
-            value={newProduct.Brand ?? ""}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, Brand: e.target.value })
-            }
-          />
-
-          <input
-            className={inputClass}
-            placeholder="Name"
-            value={newProduct.Name ?? ""}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, Name: e.target.value })
-            }
-          />
-
-          <select
-            className={selectClass}
-            value={newProduct.CategoryId ?? ""}
-            onChange={(e) =>
-              setNewProduct({
-                ...newProduct,
-                CategoryId:
-                  e.target.value === ""
-                    ? undefined
-                    : Number(e.target.value),
-              })
-            }
-          >
-            <option value="">Select category</option>
-            {categories.map((cat) => (
-              <option key={cat.Id} value={cat.Id}>
-                {cat.Name}
-              </option>
-            ))}
-          </select>
-
-          <select
-            className={selectClass}
-            value={newProduct.BuyType ?? ""}
-            onChange={(e) =>
-              setNewProduct({
-                ...newProduct,
-                BuyType: e.target.value as "SingleBuy" | "MultiBuy",
-              })
-            }
-          >
-            <option value="">Buy type</option>
-            <option value="SingleBuy">Single Buy</option>
-            <option value="MultiBuy">Multi Buy</option>
-          </select>
-
-          <input
-            type="number"
-            className={inputClass}
-            placeholder="Price (SEK)"
-            value={newProduct.Price ?? ""}
-            onChange={(e) =>
-              setNewProduct({
-                ...newProduct,
-                Price: Number(e.target.value),
-              })
-            }
-          />
-
-          <input
-            type="number"
-            className={inputClass}
-            placeholder="Profit Margin Amount"
-            value={newProduct.ProfitMarginAmount ?? ""}
-            onChange={(e) =>
-              setNewProduct({
-                ...newProduct,
-                ProfitMarginAmount: Number(e.target.value),
-              })
-            }
-          />
-
-          <input
-            type="number"
-            className={inputClass}
-            placeholder="Profit Margin %"
-            value={newProduct.ProfitMarginPercentage ?? ""}
-            onChange={(e) =>
-              setNewProduct({
-                ...newProduct,
-                ProfitMarginPercentage: Number(e.target.value),
-              })
-            }
-          />
-        </div>
-
-        <button
-          onClick={addProduct}
-          className="mt-6 rounded-md bg-blue-600 px-5 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          Add Product
-        </button>
-      </div>
-
-      {/* Add Gavel */}
-      <div className="mb-8 rounded-lg border bg-white p-6 shadow-sm">
-        <h3 className="mb-4 text-lg font-semibold text-gray-800">Add Gavel</h3>
-
-        <input
-          className={inputClass}
-          placeholder="Title"
-          value={newGavel.Title}
-          onChange={(e) =>
-            setNewGavel({ ...newGavel, Title: e.target.value })
-          }
-        />
-
-        <input
-          className={`${inputClass} mt-3`}
-          placeholder="Image URL"
-          value={newGavel.Image}
-          onChange={(e) =>
-            setNewGavel({ ...newGavel, Image: e.target.value })
-          }
-        />
-
-        <div className="mt-4 space-y-2">
-          {products.map((p) => (
-            <label key={p.Id} className="flex items-center gap-2 text-sm">
-              <input
-                type="checkbox"
-                checked={newGavel.ProductIds.includes(p.Id)}
-                onChange={(e) =>
-                  setNewGavel({
-                    ...newGavel,
-                    ProductIds: e.target.checked
-                      ? [...newGavel.ProductIds, p.Id]
-                      : newGavel.ProductIds.filter((id) => id !== p.Id),
-                  })
-                }
-              />
-              {p.Brand} – {p.Name}
-            </label>
-          ))}
-        </div>
-
-        <button
-          onClick={addGavel}
-          className="mt-6 rounded-md  bg-blue-600 px-5 py-2 text-sm font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
-        >
-          Add Gavel
-        </button>
-      </div>
+      {/* Add Gavel section moved to separate component */}
+      <AddGavelForm
+        products={products}
+        newGavel={newGavel}
+        setNewGavel={setNewGavel}
+        addGavel={addGavel}
+      />
 
       {/* Gavels */}
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-        {gavels.map((gavel) => (
-          <div key={gavel.Id} className="rounded-lg bg-white p-4 shadow">
-            {gavel.Image && (
-              <img
-                src={gavel.Image}
-                alt={gavel.Title}
-                className="mb-4 h-32 w-full rounded object-cover"
-              />
-            )}
-            <h3 className="mb-2 text-lg font-medium">{gavel.Title}</h3>
-
-            {gavel.GavelProducts.map((gp) => (
-              <div key={gp.Product.Id} className="border-t pt-2 text-sm">
-                <p className="font-medium">
-                  {gp.Product.Brand} – {gp.Product.Name}
-                </p>
-                <p className="text-xs text-gray-600">
-  Category: {gp.Product.Category.Name} | Price: {gp.Product.Price} SEK | Mål:{" "}
-  <span>
-    {gp.Product.Category.TargetPercentage}%
-  </span>
-  {" "} | Marginal:{" "}
-  <span
-    className={
-      gp.Product.ProfitMarginPercentage > gp.Product.Category.TargetPercentage
-        ? "text-green-600 font-semibold"
-        : "text-red-600 font-semibold"
-    }
-  >
-    {gp.Product.ProfitMarginPercentage}%
-  </span>
-</p>
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
+      <GavelGrid gavels={gavels} />
     </section>
   );
 };
